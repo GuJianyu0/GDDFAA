@@ -1,0 +1,77 @@
+#########################################################################################
+### Instructions for GDDFAA
+### 
+### GDDFAA (galactic dynamical distribution functions based on angle-action) is 
+### a prog to calculate the distribution functions (DF) of galaxies based on 
+### angle-action ariables.
+### 
+### The code is an interface by TACT (https://github.com/jls713/tact, 
+### originally provided by J. L. Sanders in C++) and some other progs. One has
+### made some modifications especially about triaxial Stackel Fudge (TSF, a 
+### method to estimate angle-acitons of triaxial galaxy provided in TACT) and 
+### fit the DF.
+#########################################################################################
+
+
+
+1. The procedure of the prog is mainly in 4 steps, 
+(a) Generate an N-body dark halo with a certain mass density 
+profile as initial condition by the prog DICE 
+(https://bitbucket.org/vperret/dice/wiki/browse/, by V. 
+Perret in C). The mass and scale length of in the initial 
+condition is refered to the Milky-Way, the particle count 
+is 1e6, the axis ratio is fixed when input a density profile 
+formula (like a set of concentric ellipsoidal surfaces, 
+$\rho = \rho(r_q), r_q = l2norm(\{x/q_x, y/q_y, z/q_z\})$, 
+q_i is axis ratio; Certainly, the axis ratio at different 
+radius is might not same in simulation, and the TSF is not 
+need fixed axis ratio), and the radical 
+profile is usually double power-law or Sersic.
+(b) Simulate the initial condition in prog Gadget2 
+(https://wwwmpa.mpa-garching.mpg.de/galform/gadget/, in C) 
+in about 10 Gyr.
+(c) Select a snapshot (after about 5 Gyr) and use the TSF 
+of TACT to calculate actions. We use the potential by 
+SCF (self-consist field) method code (by Chris Mihos et al. 
+in Fortran and compiled in C++), change some code of TACT, 
+and make an interface to snapshot data. For example, before 
+converting snapshot to potential, we move the x and v to 
+the galaxy mass center and rotate the galaxy by the interia 
+moment ("triaxialize the snapshot"); the foci in 
+calculating actions are by a analytical potential or by 
+choosing the orbit when $\delta \lambda$ in ellipsoidal 
+coordinate is minimum (the three actions in ellipsoidal 
+coordinate are $\{J_\lambda, J_\mu, J_\nu\}$) (when directly 
+using unsmoothed potential, the unexpected nan value might 
+occur in solving equations in TACT).
+(d) We average the actions of nearest 5 snapshots, calculate 
+the numerical density by kernel density estimation and fit 
+its DFA with a certain form (fit function: a modified 
+power-law term multiplied by a exponent term; xdata: TSF 
+actions; ydata: kernel density of 3d-actions data; data process 
+prog: scipy.optimize.curve_fit() in python). And after testing, 
+most of the action distribution of power-law density profile 
+can be fit like this DFA form.
+(e) The above procedure are controled in linux shell to 
+calculate actions of many snapshots.
+
+***Some files will be completely uploaded after the paper.***
+
+
+
+2. How to use:
+(a) Prepare environment
+Ubuntu 20.04 system;
+Prepare: gcc g++ gfortran cmake mpich libgsl-dev libfftw3-dev 
+libeigen3-dev liblapack-dev libhdf5-devlibgtest-dev 
+libopencv-dev python3;
+Some other dependencies has been provided in ./install_and_run/install.bash;
+(b) Install
+Set shell variable ${folder_main} in ./install_and_run/install.bash. 
+Open terminal at this folder and run in shell 
+$bash install.bash
+(c) Set initial conditions of generated galaxies in DICE, simulation 
+options in Gadget and running options in ./install_and_run/user_settings_multi.txt, 
+and run in shell 
+$bash run.bash
+(d) Get results.
