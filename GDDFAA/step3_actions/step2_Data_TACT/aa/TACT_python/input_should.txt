@@ -1,0 +1,7 @@
+-1.68419 -4.37584 -1.35614 0.067595 3.63351 25.0379 #错误<-Ints={E,Lz,Kt[0]}, ptau2ROOT_AxiSym_Fudge()<0
+mains/./test_test.exe XX/0prog/gadget/Gadget-2.0.7/galaxy_PM17 0 25. 1. 2. 0.3 0.5 2. #x>=164.
+mains/./test_actions.exe 8.3 2.1 0.26 100.4 110.5 101.6 halo.action 0.1
+mains/./test_actions.exe 8.178 0.1 0.225 25.13 180.01 14.95 thin 10.
+mains/./test_actions.exe 8.178 0.1 0.225 25.13 180.01 14.95 20201017_0.actions 0.1
+
+# Fudgev1 ItTC O2GF AvGF Fudgev2 CAA SAA Fit
