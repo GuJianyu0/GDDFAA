@@ -2,8 +2,8 @@
 ### Instructions for GDDFAA
 ### 
 ### GDDFAA (galactic dynamical distribution functions based on angle-action) is 
-### a prog to calculate the distribution functions (DF) of galaxies based on 
-### angle-action ariables.
+### a prog to calculate the angle-action based distribution functions (DF) of 
+### galaxy halo and stellars in Nbody simulation.
 ### 
 ### The code is an interface by TACT (https://github.com/jls713/tact, 
 ### originally provided by J. L. Sanders in C++) and some other progs. One has
