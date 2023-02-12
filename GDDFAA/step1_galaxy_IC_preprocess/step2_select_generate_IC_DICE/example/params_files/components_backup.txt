@@ -1,0 +1,37 @@
+
+################################
+# Component 2: Thin stellar disk
+################################
+mass_frac2		        0.05
+npart2			        5000 #500000
+npart_pot2              10000 #1000000
+model2			        3 #原2
+# If the value is zero and the particle type is not 1 the size is determined using the spin conservation
+# (Fitting formula from Mo, Mao & White 1998)
+scale_length2		    0.
+cut2			        9.0
+flatz2			        0.15
+mcmc_step2		        0.3
+type2			        2
+stream_fraction2	    1.00
+# Epicycle approximation in the Jeans equations
+epicycle2		        1
+# Minimal value for the Toomre parameter
+Q_lim2			        1.25
+# Fixed value for the Toomre parameter
+Q_fixed2			    0.0
+# Additional term for the Toomre parameter
+Q_boost2		        0.0
+# Past constant Star Formation Rate [Msol/yr]
+# Negative value recomptes the SFR according to Bouché et al. 2010
+SFR2               	    -1.
+# Minimum age of the stars [Myr]
+min_age2                0.
+# Metallicity of the stars [Zsolar]
+metal2                  0.01
+# Gaussian fluctuations in the density field
+dens_fluct2		        0
+# Use the density cut during the Jeans equation integration
+jeans_mass_cut2		    1
+compute_vel2		    1
+

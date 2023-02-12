@@ -1,0 +1,75 @@
+
+## This file is params for a galaxy initial condition (IC).
+## the name of the galaxy is galaxy_general.XXX when calculating; then, they are rename to galaxy_general_123.XXX to store.
+## When reading, vacum line are dismissed. The sign of notes: '#' or '/''/' or '%' or '!'.
+
+# ##an example of param
+# a 			100	200	#the first is name, the second is value, the left are no use.
+no_use			110.		#no_use
+
+####------------------------------------------------------------------
+####about the galaxy model
+##model identity
+modelId		4
+##model infomation
+modelInfo		_halo_EinastoDICE_spherical_rs_19.6_pts_1.0e4
+##model path to load and put
+modelPath		galaxy_general/snaps/
+
+####about whole galaxy
+##virial mass, 1e10*M_\Odot
+Mass_vir		137.		#M
+
+##number of components
+components		1		#N
+
+##semiaxis of elliptical coordinate when calculation angle-actions in Sanders TACT Fudge Method
+TACT_semiaxis_Alpha	-60.		#$-alpha^2$, where alpha is length of the longset semiaxis
+TACT_semiaxis_Beta	-40.		#$-bata^2$
+TACT_semiaxis_Gamma	-1.		#$-gamma^2$, while this is default -1. in that prog
+
+##softening of particle type
+softening_type_gas	0.05		#0: gas
+softening_type_halo	0.05		#1: halo
+softening_type_disk	0.02		#2: disk
+softening_type_bulge	0.02		#3: bulge
+softening_type_stars	0.02		#4: stars
+softening_type_bndry	0.02		#5: bndry
+
+####-------------------------------------------------------------------
+####about a component of the galaxy
+##total number of component1 (type1, halo) particles
+N_comp1			10000		#N
+##total number of component2 (type0, gas) particles
+# N_comp2			2000	#N
+
+##mass fraction of a component
+frac_mass_comp1		1. #0.9		#frac
+# frac_mass_comp2		0.06	#frac
+
+##softening of a component; unused
+softening_comp1		0.05		#soft
+# softening_comp2		0.02	#soft
+
+##scale length of a component
+scale_length_comp1	19.6		#sl
+# scale_length_comp2	0.		#sl
+
+## falttening of a component
+flatx1			1.
+flaty1			1.
+flatz1			1.
+# flatx2			1.
+# flaty2			0.6
+# flatz2			0.4
+
+##power of powerlaw1 or Einaso_usual of a component
+powerS1		1.7
+# power2		3.
+##power of powerlaw2, A, B  of a component
+powerA1		1.
+powerB1		3.
+
+
+
+
