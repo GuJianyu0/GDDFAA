@@ -1,0 +1,2 @@
+##:: [component_0] scale_density(rho_0) scale_radius(r_0, if has)
+0.004082 19.600000
